@@ -18,10 +18,9 @@ class TestStuff(TestCase):
 		]
 
 		response = client.post("/answers/", data=json.dumps(data), content_type='application/json')
-		# print response.content
 		results = json.loads(response.content)
 
-		print results
+		# print results
 
 	def test_bulk_update(self):
 		client = Client()
@@ -32,10 +31,7 @@ class TestStuff(TestCase):
 			]
 
 		response = client.post("/answers/", data=json.dumps(data), content_type='application/json')
-		# print response.content
 		results = json.loads(response.content)
-
-		print results
 
 		data = [
 			{'id': results[0]['id'], 'parameter': Parameter.objects.create(name='a').id, 'user': 1},
@@ -43,6 +39,9 @@ class TestStuff(TestCase):
 			]
 
 		response = client.patch("/answers/", data=json.dumps(data), content_type='application/json')
+		results = json.loads(response.content)
+
+		print results
 
 
 	def xtest_nothing(self):
